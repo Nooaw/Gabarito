@@ -2,6 +2,8 @@
 
 Aplicativo Android para gestão de serviços de marcenaria, desenvolvido como atividade de extensão acadêmica (ADS II) com foco no ODS 8 - Trabalho Decente e Crescimento Econômico.
 
+OBSERVAÇÃO: FEITO COM AJUDA DE I.A
+
 ## 🎯 Objetivo
 
 Ferramenta digital offline para pequeno marceneiro organizar:
@@ -107,14 +109,14 @@ apk-marcenaria/
 
 ## ✅ Checklist de Testes
 
-- [ ] App abre sem crash
-- [ ] CRUD Clientes e Serviços funcional
-- [ ] Persistência após fechar/reabrir/reiniciar
+- [X] App abre sem crash
+- [X] CRUD Clientes e Serviços funcional
+- [X] Persistência após fechar/reabrir/reiniciar
 - [ ] Filtros e busca funcionam
 - [ ] Backup JSON exporta/importa corretamente
 - [ ] CSV abre no Excel/Google Sheets
 - [ ] Funciona 100% offline
-- [ ] APK instala e roda em dispositivo físico
+- [X] APK instala e roda em dispositivo físico
 
 ## 📚 Documentação
 
