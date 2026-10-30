@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1B4D2E">
+  <meta name="description" content="Marcenaria Organizada - Gestão de serviços, clientes e prazos">
+  <title>Marcenaria Organizada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header" role="banner">
+      <div class="header-content">
+        <div class="header-left">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <h1 class="app-title">Marcenaria Organizada</h1>
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="btn-backup" aria-label="Backup e restauração" data-tooltip="Backup">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+          </button>
+          <button class="icon-btn" id="btn-settings" aria-label="Configurações" data-tooltip="Configurações">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main" role="main">
+      <section id="screen-dashboard" class="screen active" aria-label="Dashboard">
+        <div class="screen-header">
+          <h2>Dashboard</h2>
+          <button class="btn btn-primary" id="btn-novo-servico-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Serviço
+          </button>
+        </div>
+
+        <div class="stats-grid" role="region" aria-label="Indicadores principais">
+          <article class="stat-card" data-stat="total">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-total">0</span>
+              <span class="stat-label">Total de Serviços</span>
+            </div>
+          </article>
+          <article class="stat-card" data-stat="em-producao">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-em-producao">0</span>
+              <span class="stat-label">Em Produção</span>
+            </div>
+          </article>
+          <article class="stat-card" data-stat="aguardando">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-aguardando">0</span>
+              <span class="stat-label">Aguardando Aprovação</span>
+            </div>
+          </article>
+          <article class="stat-card" data-stat="finalizados">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-finalizados">0</span>
+              <span class="stat-label">Finalizados (não entregues)</span>
+            </div>
+          </article>
+          <article class="stat-card" data-stat="proximas">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-proximas">0</span>
+              <span class="stat-label">Entregas Próximas (7 dias)</span>
+            </div>
+          </article>
+          <article class="stat-card" data-stat="atrasados">
+            <div class="stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-atrasados">0</span>
+              <span class="stat-label">Atrasados</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="quick-actions" role="region" aria-label="Ações rápidas">
+          <button class="action-btn" data-action="servicos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Serviços</span>
+          </button>
+          <button class="action-btn" data-action="prazos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span>Prazos</span>
+          </button>
+          <button class="action-btn" data-action="clientes">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Clientes</span>
+          </button>
+          <button class="action-btn" data-action="backup">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span>Backup</span>
+          </button>
+        </div>
+
+        <div class="empty-state" id="empty-dashboard" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <h3>Nenhum serviço cadastrado</h3>
+          <p>Comece cadastrando seu primeiro serviço ou cliente</p>
+          <button class="btn btn-primary" id="btn-primeiro-servico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Cadastrar Primeiro Serviço
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-servicos" class="screen" aria-label="Serviços">
+        <div class="screen-header">
+          <h2>Serviços</h2>
+          <button class="btn btn-primary" id="btn-novo-servico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Serviço
+          </button>
+        </div>
+
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="search-servicos" placeholder="Buscar por cliente, móvel ou descrição..." aria-label="Buscar serviços">
+          </div>
+          <div class="filter-group">
+            <select id="filter-status" aria-label="Filtrar por status">
+              <option value="">Todos os status</option>
+              <option value="orcamento">Orçamento</option>
+              <option value="aguardando">Aguardando Aprovação</option>
+              <option value="aprovado">Aprovado</option>
+              <option value="producao">Em Produção</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="entregue">Entregue</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+            <select id="filter-prazo" aria-label="Filtrar por prazo">
+              <option value="">Todos os prazos</option>
+              <option value="hoje">Entregas de hoje</option>
+              <option value="7dias">Próximos 7 dias</option>
+              <option value="atrasados">Atrasados</option>
+              <option value="sem-prazo">Sem prazo definido</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="list-container" id="servicos-list" role="list" aria-label="Lista de serviços"></div>
+
+        <div class="empty-state" id="empty-servicos" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <h3>Nenhum serviço encontrado</h3>
+          <p>Cadastre seu primeiro serviço para começar</p>
+          <button class="btn btn-primary" id="btn-novo-servico-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Serviço
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-clientes" class="screen" aria-label="Clientes">
+        <div class="screen-header">
+          <h2>Clientes</h2>
+          <button class="btn btn-primary" id="btn-novo-cliente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Cliente
+          </button>
+        </div>
+
+        <div class="search-filter-bar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="search-clientes" placeholder="Buscar por nome..." aria-label="Buscar clientes">
+          </div>
+        </div>
+
+        <div class="list-container" id="clientes-list" role="list" aria-label="Lista de clientes"></div>
+
+        <div class="empty-state" id="empty-clientes" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <h3>Nenhum cliente cadastrado</h3>
+          <p>Adicione seu primeiro cliente</p>
+          <button class="btn btn-primary" id="btn-novo-cliente-empty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Novo Cliente
+          </button>
+        </div>
+      </section>
+
+      <section id="screen-prazos" class="screen" aria-label="Prazos e Entregas">
+        <div class="screen-header">
+          <h2>Prazos e Entregas</h2>
+        </div>
+
+        <div class="prazos-tabs" role="tablist" aria-label="Filtros de prazo">
+          <button role="tab" class="tab-btn active" data-tab="hoje" aria-selected="true">Hoje</button>
+          <button role="tab" class="tab-btn" data-tab="proximos" aria-selected="false">Próximos 7 dias</button>
+          <button role="tab" class="tab-btn" data-tab="atrasados" aria-selected="false">Atrasados</button>
+          <button role="tab" class="tab-btn" data-tab="sem-prazo" aria-selected="false">Sem prazo</button>
+          <button role="tab" class="tab-btn" data-tab="aguardando" aria-selected="false">Aguardando Entrega</button>
+        </div>
+
+        <div class="tab-panels">
+          <div role="tabpanel" id="panel-hoje" class="tab-panel active" aria-labelledby="tab-hoje">
+            <div class="list-container" id="prazos-hoje-list"></div>
+            <div class="empty-state" hidden><h3>Nenhuma entrega para hoje</h3><p>Todos os serviços estão em dia</p></div>
+          </div>
+          <div role="tabpanel" id="panel-proximos" class="tab-panel" aria-labelledby="tab-proximos" hidden>
+            <div class="list-container" id="prazos-proximos-list"></div>
+            <div class="empty-state" hidden><h3>Nenhuma entrega próxima</h3><p>Nenhum serviço com prazo nos próximos 7 dias</p></div>
+          </div>
+          <div role="tabpanel" id="panel-atrasados" class="tab-panel" aria-labelledby="tab-atrasados" hidden>
+            <div class="list-container" id="prazos-atrasados-list"></div>
+            <div class="empty-state" hidden><h3>Nenhum serviço atrasado</h3><p>Todos os prazos estão em dia</p></div>
+          </div>
+          <div role="tabpanel" id="panel-sem-prazo" class="tab-panel" aria-labelledby="tab-sem-prazo" hidden>
+            <div class="list-container" id="prazos-sem-prazo-list"></div>
+            <div class="empty-state" hidden><h3>Todos os serviços têm prazo</h3><p>Nenhum serviço sem data de entrega definida</p></div>
+          </div>
+          <div role="tabpanel" id="panel-aguardando" class="tab-panel" aria-labelledby="tab-aguardando" hidden>
+            <div class="list-container" id="prazos-aguardando-list"></div>
+            <div class="empty-state" hidden><h3>Nenhum serviço aguardando entrega</h3><p>Todos os finalizados já foram entregues</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-backup" class="screen" aria-label="Backup e Restauração">
+        <div class="screen-header">
+          <h2>Backup e Restauração</h2>
+        </div>
+
+        <div class="backup-section">
+          <article class="backup-card">
+            <div class="backup-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </div>
+            <div class="backup-content">
+              <h3>Exportar Backup</h3>
+              <p>Salva todos os clientes, serviços e configurações em um arquivo JSON. O backup inclui dados financeiros e deve ser guardado com segurança.</p>
+              <button class="btn btn-primary" id="btn-exportar-backup">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Exportar Backup (JSON)
+              </button>
+              <button class="btn btn-secondary" id="btn-exportar-csv">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="10" y2="9.01"/></svg>
+                Exportar CSV (Planilha)
+              </button>
+            </div>
+          </article>
+
+          <article class="backup-card">
+            <div class="backup-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            </div>
+            <div class="backup-content">
+              <h3>Restaurar Backup</h3>
+              <p>Importa dados de um arquivo de backup JSON. Os dados atuais serão substituídos após confirmação.</p>
+              <button class="btn btn-warning" id="btn-importar-backup">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Importar Backup (JSON)
+              </button>
+              <input type="file" id="input-backup" accept=".json" hidden aria-label="Selecionar arquivo de backup">
+            </div>
+          </article>
+
+          <article class="backup-card info-card">
+            <div class="backup-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div class="backup-content">
+              <h3>Informações Importantes</h3>
+              <ul>
+                <li>Faça backups regulares (semanalmente ou após alterações importantes)</li>
+                <li>O arquivo de backup contém nomes, telefones, endereços e valores financeiros</li>
+                <li>Guarde o backup em local seguro (nuvem pessoal, pen drive, e-mail)</li>
+                <li>A restauração substitui <strong>todos</strong> os dados atuais</li>
+                <li>Teste a restauração periodicamente para garantir integridade</li>
+                <li>O formato CSV não permite restauração, apenas visualização</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="screen-configuracoes" class="screen" aria-label="Configurações">
+        <div class="screen-header">
+          <h2>Configurações</h2>
+        </div>
+
+        <div class="settings-list">
+          <article class="setting-card">
+            <h3>Sobre o Aplicativo</h3>
+            <div class="setting-item">
+              <span>Versão</span>
+              <span id="app-version">1.0.0</span>
+            </div>
+            <div class="setting-item">
+              <span>Desenvolvido para</span>
+              <span>Atividade de Extensão - ADS II</span>
+            </div>
+            <div class="setting-item">
+              <span>ODS Relacionado</span>
+              <span>ODS 8 - Trabalho Decente e Crescimento Econômico</span>
+            </div>
+          </article>
+
+          <article class="setting-card">
+            <h3>Dados e Armazenamento</h3>
+            <div class="setting-item">
+              <span>Banco de dados</span>
+              <span id="db-info">SQLite Local</span>
+            </div>
+            <div class="setting-item">
+              <span>Tamanho estimado</span>
+              <span id="db-size">Calculando...</span>
+            </div>
+            <button class="btn btn-danger" id="btn-limpar-dados">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              Limpar Todos os Dados
+            </button>
+          </article>
+
+          <article class="setting-card">
+            <h3>Preferências</h3>
+            <label class="toggle-setting">
+              <span>Modo escuro (futuro)</span>
+              <input type="checkbox" id="toggle-dark" disabled>
+              <span class="toggle-slider"></span>
+            </label>
+            <label class="toggle-setting">
+              <span>Somente dados essenciais</span>
+              <input type="checkbox" id="toggle-essential" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="app-nav" role="navigation" aria-label="Navegação principal">
+      <button class="nav-item active" data-screen="dashboard" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Início</span>
+      </button>
+      <button class="nav-item" data-screen="servicos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Serviços</span>
+      </button>
+      <button class="nav-item" data-screen="prazos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Prazos</span>
+      </button>
+      <button class="nav-item" data-screen="clientes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Clientes</span>
+      </button>
+      <button class="nav-item" data-screen="backup">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        <span>Backup</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay" hidden></div>
+
+  <div class="modal" id="modal-servico" hidden role="dialog" aria-modal="true" aria-labelledby="modal-servico-title">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-servico-title">Novo Serviço</h3>
+        <button class="modal-close" aria-label="Fechar">&times;</button>
+      </header>
+      <form id="form-servico" class="modal-form">
+        <input type="hidden" id="servico-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-cliente">Cliente <span class="required" aria-hidden="true">*</span></label>
+            <select id="servico-cliente" required aria-required="true">
+              <option value="">Selecione um cliente</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-nome">Nome do Móvel <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="servico-nome" placeholder="Ex: Guarda-roupa 3 portas" required aria-required="true" maxlength="100">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-tipo">Tipo de Móvel</label>
+            <select id="servico-tipo">
+              <option value="">Selecione...</option>
+              <option value="guarda-roupa">Guarda-roupa</option>
+              <option value="armario-cozinha">Armário de Cozinha</option>
+              <option value="mesa">Mesa</option>
+              <option value="estante">Estante</option>
+              <option value="painel">Painel</option>
+              <option value="porta">Porta</option>
+              <option value="balcao">Balcão</option>
+              <option value="planejado">Móvel Planejado</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-descricao">Descrição Detalhada</label>
+            <textarea id="servico-descricao" rows="3" placeholder="Detalhes do serviço, acabamentos, ferragens, etc." maxlength="1000"></textarea>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-medidas">Medidas (L x A x P em cm)</label>
+            <input type="text" id="servico-medidas" placeholder="Ex: 200x240x60" maxlength="50">
+          </div>
+          <div class="form-group">
+            <label for="servico-materiais">Materiais Principais</label>
+            <input type="text" id="servico-materiais" placeholder="Ex: MDF 18mm, Ferragens Blum, Vidro" maxlength="200">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-valor-orcado">Valor Orçado (R$) <span class="required" aria-hidden="true">*</span></label>
+            <input type="number" id="servico-valor-orcado" step="0.01" min="0" required aria-required="true" placeholder="0,00">
+          </div>
+          <div class="form-group">
+            <label for="servico-valor-final">Valor Final (R$)</label>
+            <input type="number" id="servico-valor-final" step="0.01" min="0" placeholder="0,00">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-prazo">Prazo de Entrega <span class="required" aria-hidden="true">*</span></label>
+            <input type="date" id="servico-prazo" required aria-required="true">
+          </div>
+          <div class="form-group">
+            <label for="servico-status">Status</label>
+            <select id="servico-status" required aria-required="true">
+              <option value="orcamento">Orçamento</option>
+              <option value="aguardando">Aguardando Aprovação</option>
+              <option value="aprovado">Aprovado</option>
+              <option value="producao">Em Produção</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="entregue">Entregue</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico-observacoes">Observações Internas</label>
+            <textarea id="servico-observacoes" rows="2" placeholder="Notas para a equipe, alterações combinadas, etc." maxlength="500"></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-servico">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-salvar-servico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-cliente" hidden role="dialog" aria-modal="true" aria-labelledby="modal-cliente-title">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-cliente-title">Novo Cliente</h3>
+        <button class="modal-close" aria-label="Fechar">&times;</button>
+      </header>
+      <form id="form-cliente" class="modal-form">
+        <input type="hidden" id="cliente-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cliente-nome">Nome Completo <span class="required" aria-hidden="true">*</span></label>
+            <input type="text" id="cliente-nome" placeholder="Nome do cliente" required aria-required="true" maxlength="100">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cliente-telefone">Telefone/WhatsApp</label>
+            <input type="tel" id="cliente-telefone" placeholder="(11) 99999-9999" maxlength="20">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cliente-endereco">Endereço</label>
+            <input type="text" id="cliente-endereco" placeholder="Rua, número, bairro, cidade" maxlength="200">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cliente-observacoes">Observações</label>
+            <textarea id="cliente-observacoes" rows="2" placeholder="Informações adicionais, preferências, etc." maxlength="500"></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar-cliente">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-salvar-cliente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-detalhes-servico" hidden role="dialog" aria-modal="true" aria-labelledby="modal-detalhes-title">
+    <div class="modal-content modal-large">
+      <header class="modal-header">
+        <h3 id="modal-detalhes-title">Detalhes do Serviço</h3>
+        <button class="modal-close" aria-label="Fechar">&times;</button>
+      </header>
+      <div class="modal-body" id="modal-detalhes-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-fechar-detalhes">Fechar</button>
+        <button type="button" class="btn btn-primary" id="btn-editar-detalhes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-detalhes-cliente" hidden role="dialog" aria-modal="true" aria-labelledby="modal-detalhes-cliente-title">
+    <div class="modal-content modal-large">
+      <header class="modal-header">
+        <h3 id="modal-detalhes-cliente-title">Detalhes do Cliente</h3>
+        <button class="modal-close" aria-label="Fechar">&times;</button>
+      </header>
+      <div class="modal-body" id="modal-detalhes-cliente-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-fechar-detalhes-cliente">Fechar</button>
+        <button type="button" class="btn btn-primary" id="btn-editar-detalhes-cliente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Editar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-confirmacao" hidden role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title">
+    <div class="modal-content modal-small">
+      <header class="modal-header">
+        <h3 id="modal-confirm-title">Confirmar</h3>
+      </header>
+      <div class="modal-body" id="modal-confirm-body"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="btn-confirm-cancel">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btn-confirm-ok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

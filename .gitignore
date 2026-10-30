@@ -1,0 +1,61 @@
+# Gradle
+.gradle/
+build/
+*/build/
+*.iml
+*.ipr
+*.iws
+*.iml
+
+# Local configuration (SDK paths, etc.)
+local.properties
+*/local.properties
+
+# Capacitor
+android/app/src/main/assets/public/
+capacitor.config.json
+
+# Keystore / signing
+*.keystore
+*.jks
+release.keystore
+google-services.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test
+coverage/
+.nyc_output/
+
+# Temporary
+*.tmp
+*.temp
+testdel.js
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
+# Gradle wrapper (optional - keep if you want reproducible builds)
+# gradle/wrapper/gradle-wrapper.jar

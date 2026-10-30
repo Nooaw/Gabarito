@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Marcenaria Organizada</string>
+    <string name="title_activity_main">Marcenaria Organizada</string>
+    <string name="package_name">com.marcenaria.organizada</string>
+    <string name="custom_url_scheme">com.marcenaria.organizada</string>
+</resources>
