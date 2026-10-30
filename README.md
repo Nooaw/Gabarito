@@ -1,4 +1,4 @@
-# Marcenaria Organizada
+# Gabarito
 
 Aplicativo Android para gestão de serviços de marcenaria, desenvolvido como atividade de extensão acadêmica (ADS II) com foco no ODS 8 - Trabalho Decente e Crescimento Econômico.
 
@@ -84,7 +84,7 @@ cd android && ./gradlew assembleRelease
 ## 📁 Estrutura do Projeto
 
 ```
-marcenaria-organizada/
+apk-marcenaria/
 ├── src/                    # App Web (HTML/CSS/JS)
 │   ├── index.html
 │   ├── css/               # Design System (5 arquivos)
@@ -93,14 +93,16 @@ marcenaria-organizada/
 │   │   ├── models/        # Cliente, Servico
 │   │   ├── services/      # Database (SQLite)
 │   │   ├── utils/         # Helpers (moeda, data, validação)
-│   │   └── views/         # Renderização de cards
-│   └── assets/icons/
+│   │   ├── views/         # Renderização de cards
+│   │   └── shims/         # Capacitor plugin shims
 ├── android/               # Projeto Capacitor/Android
+├── .gitignore
 ├── capacitor.config.json
 ├── package.json
 ├── DOCUMENTACAO_ACADEMICA.md
 ├── MANUAL_USUARIO.md
-└── INSTRUCOES_BUILD.md
+├── INSTRUCOES_BUILD.md
+└── RELATORIO_TESTES.md
 ```
 
 ## ✅ Checklist de Testes
@@ -128,9 +130,18 @@ marcenaria-organizada/
 - **Eixo**: Economia Sustentável
 - **ODS**: 8 - Trabalho Decente e Crescimento Econômico
 - **Público**: Microempresário (marceneiro)
-- **Prazo**: 17/11/2026
+- **Entrega**: 17/11/2026
+- **App Name**: Gabarito (package: `com.marcenaria.organizada`)
 
-## ⚠️ Limitações Conhecidas (v1.0)
+## 🔧 Correções Recentes (v1.1)
+
+- **Layout:** Badges de status/prazo não sobrepõem mais títulos em telas pequenas (flex-wrap no `.service-header`)
+- **Click listeners:** Botões "Configurações" (engrenagem), "Novo Serviço" (aba Serviços) e "Novo Cliente" (aba Clientes) agora funcionam
+- **Datas:** `getTodayISO()` / `getFutureDate()` retornam data local Brasil (UTC-3) em vez de UTC
+- **Moeda:** `parseCurrency("1.000,00")` agora funciona corretamente
+- **Database web:** UPDATE aplica SET values no fallback localStorage
+
+## ⚠️ Limitações Conhecidas (v1.1)
 
 - Sem sincronização multi-dispositivo
 - Sem notificações push
